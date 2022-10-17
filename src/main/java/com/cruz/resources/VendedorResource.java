@@ -2,6 +2,8 @@ package com.cruz.resources;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +36,7 @@ public class VendedorResource {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Vendedor> novoVendedor(@RequestBody VendedorDTO request) {
+	public ResponseEntity<Vendedor> novoVendedor(@RequestBody @Valid VendedorDTO request) {
 		return new ResponseEntity<>(vendedorService.novoVendedor(request), HttpStatus.CREATED);
 	}
 

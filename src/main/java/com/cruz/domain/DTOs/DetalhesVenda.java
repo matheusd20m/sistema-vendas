@@ -1,11 +1,15 @@
 package com.cruz.domain.DTOs;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class DetalhesVenda {
 
     private String nome;
 
+    @JsonProperty("total_de_vendas")
     private long totalDeVendas;
 
+    @JsonProperty("media_diaria")
     private double mediaDiaria;
 
     public DetalhesVenda(String nome, long totalDeVendas, double mediaDiaria) {

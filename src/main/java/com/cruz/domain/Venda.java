@@ -13,8 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Positive;
 
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class Venda implements Serializable {
@@ -26,8 +29,10 @@ public class Venda implements Serializable {
 
 	@CreationTimestamp
 	@Column(updatable = false)
+	@JsonProperty("data_da_venda")
 	private LocalDateTime dataDaVenda;
-
+	
+	@Positive
 	private BigDecimal valor;
 
 	@ManyToOne
