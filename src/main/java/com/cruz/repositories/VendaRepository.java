@@ -11,7 +11,8 @@ import com.cruz.domain.Venda;
 import com.cruz.domain.DTOs.DetalhesVenda;
 
 public interface VendaRepository extends JpaRepository<Venda, Integer> {
-	@Query("SELECT new com.cruz.domain.DTOs.DetalhesVenda(vr.nome, COUNT(va.valor), (COUNT(va.valor) / CAST(:period AS double)))"
+	@Query("SELECT new com.cruz.domain.DTOs.DetalhesVenda(vr.nome, COUNT(va.valor), "
+			+ "(SUM(va.valor) / CAST(:period AS double)))"
             + " FROM Venda va"
             + " JOIN va.vendedor vr"
             + " WHERE va.dataDaVenda BETWEEN :startDate AND :endDate"

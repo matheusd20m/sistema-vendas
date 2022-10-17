@@ -11,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Positive;
 
@@ -36,10 +35,7 @@ public class Venda implements Serializable {
 	private BigDecimal valor;
 
 	@ManyToOne
-	@JoinColumns({
-		    @JoinColumn(name = "vendedor_id",  referencedColumnName="id"),
-		    @JoinColumn(name = "nome_vendedor",referencedColumnName="nome")
-		    })
+	@JoinColumn(name = "vendedor_id",  referencedColumnName="id")
 	private Vendedor vendedor;
 
 	public Venda() {
