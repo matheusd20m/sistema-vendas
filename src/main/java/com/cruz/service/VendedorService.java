@@ -14,7 +14,7 @@ public class VendedorService {
 	@Autowired
     private VendedorRepository vendedorRepository;
 	
-	public List<Vendedor> listarVendas() {
+	public List<Vendedor> listarVendedores() {
 		return vendedorRepository.findAll();
 	}
 

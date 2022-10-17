@@ -1,16 +1,27 @@
 package com.cruz.resources;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.cruz.domain.Venda;
+import com.cruz.service.VendaService;
 
 @RestController
 @RequestMapping(value = "/vendas")
 public class VendaResource {
 	
+	@Autowired
+    private VendaService vendaService;
+
+	
 	@RequestMapping(method = RequestMethod.GET)
-	public String find() {
-		return "Rest funcionando !";
-	}
+	public ResponseEntity<List<Venda>> listarVendas() {
+        return ResponseEntity.ok(vendaService.listarVendas());
+    }
 
 }
