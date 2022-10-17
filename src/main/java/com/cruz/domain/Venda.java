@@ -10,6 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -27,13 +30,21 @@ public class Venda implements Serializable {
 
 	private BigDecimal valor;
 
+	@ManyToOne
+	@JoinColumns({
+		    @JoinColumn(name = "vendedor_id",  referencedColumnName="id"),
+		    @JoinColumn(name = "nome_vendedor",referencedColumnName="nome")
+		    })
+	private Vendedor vendedor;
+
 	public Venda() {
 	}
 
-	public Venda(Integer id, LocalDateTime dataDaVenda, BigDecimal valor) {
+	public Venda(Integer id, LocalDateTime dataDaVenda, BigDecimal valor, Vendedor vendedor) {
 		this.id = id;
 		this.dataDaVenda = dataDaVenda;
 		this.valor = valor;
+		this.setVendedor(vendedor);
 	}
 
 	public Integer getId() {
@@ -58,6 +69,14 @@ public class Venda implements Serializable {
 
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
+	}
+
+	public Vendedor getVendedor() {
+		return vendedor;
+	}
+
+	public void setVendedor(Vendedor vendedor) {
+		this.vendedor = vendedor;
 	}
 
 	@Override
