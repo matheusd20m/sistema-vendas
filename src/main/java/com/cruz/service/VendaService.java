@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cruz.domain.Venda;
+import com.cruz.domain.Vendedor;
+import com.cruz.domain.DTOs.VendaDTO;
 import com.cruz.repositories.VendaRepository;
 import com.cruz.service.exception.ObjectNotFoundException;
 
@@ -26,5 +28,15 @@ public class VendaService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Venda não encontrada! Id: " + id + ", Tipo: " + Venda.class.getName()));
 	}
+	public Venda novaVenda(VendaDTO request) {
+        Vendedor vendedor = new Vendedor();
+        vendedor.setId(request.getVendedorId());
+
+        Venda venda = new Venda();
+        venda.setVendedor(vendedor);
+        venda.setValor(request.getValor());
+
+        return vendaRepository.save(venda);
+    }
 
 }
