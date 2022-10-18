@@ -36,7 +36,7 @@ Endpoint | Description
 -----|------
 `/vendas ` | Return all sales 
 `/{id}` | Return a sale, passing the id
-`/detalhes` | Return the salesperson total sales and the daily average value
+`/vendas/detalhes` | Return the salesperson total sales and the daily average value
 `/vendedores` | Return all sellers
 `/{id}` | Return a sellers, passing the id
  
